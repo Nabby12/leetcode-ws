@@ -4,20 +4,8 @@ set -o pipefail
 
 cd "$(dirname "$0")/.."
 
-excluded_files=(
-  ".git"
-  "scripts"
-)
-
-excluded_option=""
-for excluded_file in "${excluded_files[@]}"; do
-  if [ -n "$excluded_option" ]; then
-    excluded_option+=" -and "
-  fi
-  excluded_option+="-not -path \"./$excluded_file/*\""
-done
-
-selected=$(eval "echo \$(find ./ -type f "$excluded_option")" | tr " " "\n" | fzf --preview-window right:70%)
+current_date=$(date '+%Y%m%d')
+selected=$(find ./ -type f -path "./code/*" | tr " " "\n" | fzf --preview-window right:70% --query "$current_date")
 [[ -z "$selected" ]] && exit 0
 
 file=$(basename "$selected")

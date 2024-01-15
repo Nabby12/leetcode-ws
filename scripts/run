@@ -1,0 +1,21 @@
+#!/bin/bash
+set -eu
+set -o pipefail
+
+cd "$(dirname "$0")/.."
+
+selected=$(find ./ -type f -not -path "./.git/*" -and -not -path "./scripts/*" | fzf)
+[[ -z "$selected" ]] && return
+
+file=$(basename "$selected")
+extension=${file##*.}
+
+case "$extension" in
+  "go")
+    echo -e "exec: go run $selected\n---"
+    go run $selected
+    ;;
+  *)
+    echo "error: not match extension pattern" >&2 && exit 1
+    ;;
+esac

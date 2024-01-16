@@ -4,7 +4,7 @@ set -o pipefail
 
 cd "$(dirname "$0")/.."
 
-current_date=$(date '+%Y%m%d')
+current_date=$(date '+%Y%m')
 selected=$(find ./ -type f -path "./code/*" | tr " " "\n" | fzf --preview-window right:70% --query "$current_date")
 [[ -z "$selected" ]] && exit 0
 

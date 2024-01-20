@@ -1,0 +1,20 @@
+#!/bin/bash
+set -eu
+set -o pipefail
+
+cd "$(dirname "$0")/.."
+
+if [ ! -f "./tools/go/third_party/go.mod" ]; then
+  home=$(pwd)
+  cd ./tools/go/third_party
+  go mod init third_party && go mod tidy
+  cd $home
+fi
+
+echo $1
+echo "---"
+code="../../../$1"
+test=$(echo "$code" | sed 's/\.go/_test\.go/g')
+
+PATH="$(pwd)/tools/go/third_party/bin":$PATH
+gotest -v "$code" "$test"

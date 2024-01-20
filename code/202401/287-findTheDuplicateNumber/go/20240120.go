@@ -1,5 +1,6 @@
 package main
 
+// https://leetcode.com/problems/find-the-duplicate-number/description/
 func findTheDuplicateNumber(nums []int) int {
 	numMap := make(map[int]int, len(nums))
 

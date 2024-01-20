@@ -1,5 +1,6 @@
 package main
 
+// https://leetcode.com/problems/binary-search/description/
 func binarySearch(nums []int, target int) int {
 	ans := -1
 

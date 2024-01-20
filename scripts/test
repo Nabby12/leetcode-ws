@@ -1,13 +1,21 @@
 #!/bin/bash
-set -eu
+set -e
 set -o pipefail
 
 cd "$(dirname "$0")/.."
 
+fzf_query="$1"
 current_date=$(date '+%Y%m')
-selected=$(find ./ -type f -path "./code/*" | tr " " "\n" | grep -v "_test." | fzf --preview-window right:70% --query "$current_date")
+prefix="./code/$current_date"
+selected=$(
+  find ./ -type f -path "$prefix/*" | sed "s|$prefix||" | tr " " "\n" | grep -v "_test." \
+    | fzf --preview-window right:70% \
+      --preview='current_date=$(date '+%Y%m') && bat --color=always "./code/$current_date/$(echo {})"' \
+      --query "$fzf_query"
+)
 [[ -z "$selected" ]] && exit 0
 
+selected="$prefix/$selected"
 file=$(basename "$selected")
 extension=${file##*.}
 

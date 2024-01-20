@@ -1,0 +1,3 @@
+#!/bin/bash
+cd ./tools/go/third_party
+go run github.com/rakyll/gotest "$@"

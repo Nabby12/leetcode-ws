@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test_validAnagram20240127(t *testing.T) {
+func Test_validAnagram2(t *testing.T) {
 	t.Parallel()
 
 	type input struct {
@@ -40,7 +40,7 @@ func Test_validAnagram20240127(t *testing.T) {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
-			got := validAnagram20240127(tt.input.s, tt.input.t)
+			got := validAnagram2(tt.input.s, tt.input.t)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Fatalf("\ngot : %v\nwant: %v", got, tt.want)
 			}

@@ -1,7 +1,7 @@
 package main
 
 // https://leetcode.com/problems/valid-anagram/description/
-func validAnagram20240127(s string, t string) bool {
+func validAnagram2(s string, t string) bool {
 	if len(s) != len(t) {
 		return false
 	}

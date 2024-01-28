@@ -5,34 +5,38 @@ import (
 	"testing"
 )
 
-func Test_validAnagram2(t *testing.T) {
+func Test_groupAnagram2(t *testing.T) {
 	t.Parallel()
 
 	type input struct {
-		s string
-		t string
+		strs []string
 	}
 
 	test := []struct {
 		name  string
 		input input
-		want  bool
+		want  [][]string
 	}{
 		{
 			name: "example1",
 			input: input{
-				s: "anagram",
-				t: "nagaram",
+				strs: []string{"eat", "tea", "tan", "ate", "nat", "bat"},
 			},
-			want: true,
+			want: [][]string{{"bat"}, []string{"nat", "tan"}, []string{"ate", "eat", "tea"}},
 		},
 		{
 			name: "example2",
 			input: input{
-				s: "rat",
-				t: "car",
+				strs: []string{""},
 			},
-			want: false,
+			want: [][]string{[]string{""}},
+		},
+		{
+			name: "example3",
+			input: input{
+				strs: []string{"a"},
+			},
+			want: [][]string{[]string{"a"}},
 		},
 	}
 
@@ -40,7 +44,7 @@ func Test_validAnagram2(t *testing.T) {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
-			got := validAnagram2(tt.input.s, tt.input.t)
+			got := groupAnagram2(tt.input.strs)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Fatalf("\ngot : %v\nwant: %v", got, tt.want)
 			}

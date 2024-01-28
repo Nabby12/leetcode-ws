@@ -5,34 +5,31 @@ import (
 	"testing"
 )
 
-func Test_validAnagram2(t *testing.T) {
+func Test_productOfArrayExceptSelf(t *testing.T) {
 	t.Parallel()
 
 	type input struct {
-		s string
-		t string
+		nums []int
 	}
 
 	test := []struct {
 		name  string
 		input input
-		want  bool
+		want  []int
 	}{
 		{
 			name: "example1",
 			input: input{
-				s: "anagram",
-				t: "nagaram",
+				nums: []int{1, 2, 3, 4},
 			},
-			want: true,
+			want: []int{24, 12, 8, 6},
 		},
 		{
 			name: "example2",
 			input: input{
-				s: "rat",
-				t: "car",
+				nums: []int{-1, 1, 0, -3, 3},
 			},
-			want: false,
+			want: []int{0, 0, 9, 0, 0},
 		},
 	}
 
@@ -40,7 +37,7 @@ func Test_validAnagram2(t *testing.T) {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
-			got := validAnagram2(tt.input.s, tt.input.t)
+			got := productOfArrayExceptSelf(tt.input.nums)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Fatalf("\ngot : %v\nwant: %v", got, tt.want)
 			}

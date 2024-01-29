@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // https://leetcode.com/problems/top-k-frequent-elements/description/
 func topKFrequentElements2(nums []int, k int) []int {
 	countMap := make(map[int]int)
@@ -17,7 +15,6 @@ func topKFrequentElements2(nums []int, k int) []int {
 	ans := []int{}
 	for i := len(nums); i > 0; i-- {
 		if values, ok := freq[i]; ok {
-			fmt.Println(values)
 			ans = append(ans, values...)
 		}
 		if len(ans) >= k {

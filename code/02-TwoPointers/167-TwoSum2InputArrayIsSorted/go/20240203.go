@@ -1,6 +1,6 @@
 package main
 
-// https://leetcode.com/problems/valid-palindrome/description/
+// https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
 func twoSum2InputArrayIsSorted(numbers []int, target int) []int {
 	l, r := 0, len(numbers)-1
 	for l <= r {

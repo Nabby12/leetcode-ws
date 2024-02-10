@@ -1,6 +1,6 @@
 package main
 
-// https://leetcode.com/problems/min-stack/
+// https://leetcode.com/problems/min-stack/description/
 type MinStack struct {
 	data []int
 }

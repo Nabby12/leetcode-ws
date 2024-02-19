@@ -1,5 +1,6 @@
 package main
 
+// https://leetcode.com/problems/generate-parentheses/description/
 func generateParentheses4(n int) []string {
 	ans := []string{}
 	stack := make([]rune, n*2)

@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test_carFleet2(t *testing.T) {
+func Test_carFleet3(t *testing.T) {
 	t.Parallel()
 
 	type input struct {
@@ -52,7 +52,7 @@ func Test_carFleet2(t *testing.T) {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
-			got := carFleet2(tt.input.target, tt.input.position, tt.input.speed)
+			got := carFleet3(tt.input.target, tt.input.position, tt.input.speed)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Fatalf("\ngot : %v\nwant: %v", got, tt.want)
 			}

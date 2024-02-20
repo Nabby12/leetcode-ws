@@ -28,24 +28,24 @@ func Test_carFleet2(t *testing.T) {
 			},
 			want: 3,
 		},
-		// {
-		// 	name: "example2",
-		// 	input: input{
-		// 		target:   10,
-		// 		position: []int{3},
-		// 		speed:    []int{3},
-		// 	},
-		// 	want: 1,
-		// },
-		// {
-		// 	name: "example3",
-		// 	input: input{
-		// 		target:   100,
-		// 		position: []int{0, 2, 4},
-		// 		speed:    []int{4, 2, 1},
-		// 	},
-		// 	want: 1,
-		// },
+		{
+			name: "example2",
+			input: input{
+				target:   10,
+				position: []int{3},
+				speed:    []int{3},
+			},
+			want: 1,
+		},
+		{
+			name: "example3",
+			input: input{
+				target:   100,
+				position: []int{0, 2, 4},
+				speed:    []int{4, 2, 1},
+			},
+			want: 1,
+		},
 	}
 
 	for _, tt := range test {

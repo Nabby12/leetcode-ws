@@ -12,6 +12,7 @@ func largestRectangleInHistogram3(heights []int) int {
 			lastIndex, lastHeight := stack[len(stack)-1][0], stack[len(stack)-1][1]
 			area := lastHeight * (i - lastIndex)
 			maxArea = max(maxArea, area)
+			start = lastIndex
 			stack = stack[0 : len(stack)-1]
 		}
 

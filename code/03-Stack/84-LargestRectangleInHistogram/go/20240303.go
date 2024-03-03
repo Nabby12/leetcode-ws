@@ -1,6 +1,6 @@
 package main
 
-// https://leetcode.com/problems/binary-search/description/
+// https://leetcode.com/problems/largest-rectangle-in-histogram/description/
 func largestRectangleInHistogram4(heights []int) int {
 	maxArea := 0
 	stack := [][2]int{}

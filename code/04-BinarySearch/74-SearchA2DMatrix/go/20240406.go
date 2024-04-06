@@ -1,6 +1,6 @@
 package main
 
-// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+// https://leetcode.com/problems/search-a-2d-matrix/description/
 func searchA2DMatrix7(matrix [][]int, target int) bool {
 	t, b := 0, len(matrix)-1
 	targetRow := []int{}

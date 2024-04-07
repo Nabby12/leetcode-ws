@@ -1,7 +1,6 @@
 package main
 
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
-
 func longestSubstringWithoutRepeatingCharacters(s string) int {
 	strs := []rune(s)
 	buf := []rune{}

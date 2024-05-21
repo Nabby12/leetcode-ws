@@ -1,23 +1,24 @@
 package main
 
 // https://leetcode.com/problems/generate-parentheses/description/
-func generateParentheses9(n int) []string {
+func generateParentheses10(n int) []string {
 	ans := []string{}
 	stack := make([]rune, n*2)
-	generate9(&ans, stack, n, 0, 0)
+	generate10(&ans, stack, n, 0, 0)
 	return ans
 }
 
-func generate9(ans *[]string, stack []rune, n int, open int, close int) {
+func generate10(ans *[]string, stack []rune, n int, open int, close int) {
 	if open+close == n*2 {
 		*ans = append(*ans, string(stack))
+		return
 	}
 	if open < n {
 		stack[open+close] = '('
-		generate9(ans, stack, n, open+1, close)
+		generate10(ans, stack, n, open+1, close)
 	}
 	if close < open {
 		stack[open+close] = ')'
-		generate9(ans, stack, n, open, close+1)
+		generate10(ans, stack, n, open, close+1)
 	}
 }

@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 
 fzf_query="$1"
 current_date=$(date '+%Y%m')
-prefix="./code/"
+prefix="./code"
 selected=$(
   find ./ -type f -path "$prefix*" | sed "s|$prefix||" | tr " " "\n" | grep -v "_test." \
     | fzf --preview-window right:70% \
@@ -15,13 +15,18 @@ selected=$(
 )
 [[ -z "$selected" ]] && exit 0
 
-selected="$prefix/$selected"
+selected="$prefix$selected"
 file=$(basename "$selected")
 extension=${file##*.}
 
 case "$extension" in
   "go")
     ./scripts/go_test $selected
+    ;;
+  "py")
+    TMPDIR=$(mktemp -d -p ./scripts)
+    trap 'rm -rf "$TMPDIR"' SIGINT SIGTERM ERR EXIT
+    ./scripts/python_test $selected $TMPDIR
     ;;
   *)
     echo "error: not match extension pattern" >&2 && exit 1

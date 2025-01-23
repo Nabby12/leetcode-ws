@@ -1,0 +1,28 @@
+#!/bin/bash
+set -eu
+set -o pipefail
+
+cd "$(dirname "$0")/.."
+
+tmp_dir=$2
+
+echo $1
+code=$1
+test_code=${code/.py/_test.py}
+
+cat >$tmp_dir/Dockerfile <<EOL
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY tools/python/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY $code ./main.py
+COPY $test_code ./main_test.py
+
+CMD ["pytest", "-v", "./"]
+EOL
+
+docker build -f $tmp_dir/Dockerfile --quiet -t python-test .
+docker run --rm python-test

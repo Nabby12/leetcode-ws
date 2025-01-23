@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY $code ./main.py
 COPY $test_code ./main_test.py
 
-CMD ["pytest", "-v", "./"]
+CMD ["pytest", "-v", "./", "--color=yes"]
 EOL
 
 docker build -f $tmp_dir/Dockerfile --quiet -t python-test .
